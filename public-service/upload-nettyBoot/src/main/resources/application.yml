@@ -1,0 +1,66 @@
+# 应用信息(app info)
+info:
+  app:
+    name: @artifactId@
+    description: 接收文件
+    version: @version@
+    directory: ${user.dir}
+
+# 日志相关配置(logging setting)
+logging:
+  path: E://logs//up2yun
+
+# 不开启jmx端口进行监控
+endpoints:
+  jmx:
+    enabled: false
+
+# spring 相关配置
+spring:
+  #数据库相关配置
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://118.178.238.210:3306/td_business_oss?useUnicode=true&characterEncoding=utf8
+    username: td_business_oss
+    password: td_business_oss!@#123456
+#    password: '{cipher}11bbedc76a2d3ea4ca2d5eebce69bf1c99c26e2ebb3a42c713777646a85f68e9'
+
+# netty服务相关配置
+netty:
+  # servername
+  name: UP2YUN-SERVER
+  # 监听端口
+  port: 8091
+  # io线程数
+  workerThreads: 20
+  # 上传文件的的大小(100M)
+  maxContentSize: 104857600
+  # 上传文件保存用临时文件夹
+  tempDir: E:/temp/up2yun/
+
+#被通知人相关信息
+notice:
+  # 短信邮件转发服务器
+  #url: http://192.168.0.200:7080
+  # 接收人列表
+  emails: hechuan@51tuodao.com
+  # 一天允许短信通知最大次数
+  maxSendTimes: 3
+
+#encrypt:
+#  enabled: true
+#  key: foo
+#  keyStore:
+#    location: classpath:/server.jks
+#    password: letmein
+#    alias: mytestkey
+#    secret: changeme
+
+ipLimit:
+  enabled: false
+  accepts:
+    - 127.0.0.1
+    - 72.127.2.35
+  rejects:
+    - 10.0.17.202

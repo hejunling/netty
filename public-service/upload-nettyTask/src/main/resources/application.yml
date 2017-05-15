@@ -1,0 +1,66 @@
+# 应用信息(app info)
+info:
+  app:
+    name: @artifactId@
+    description: 将任务表记录中记录的文件上传到云的任务模块
+    version: @version@
+    directory: ${user.dir}
+
+# 日志相关配置(logging setting)
+logging:
+  path: E://logs//task
+
+# 不开启jmx端口进行监控
+endpoints:
+  jmx:
+    enabled: false
+
+# spring相关配置
+spring:
+  # 数据库相关配置
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://118.178.238.210:3306/td_business_oss?useUnicode=true&characterEncoding=utf8
+    username: td_business_oss
+    password: td_business_oss!@#123456
+#    password: '{cipher}11bbedc76a2d3ea4ca2d5eebce69bf1c99c26e2ebb3a42c713777646a85f68e9'
+
+# 任务相关配置
+task:
+  # 任务执行线程数
+  workerThreads: 10
+  # 每次调度最大记录数
+  maxCount: 20
+  # 重试次数
+  retryTimes: 3
+  # 每次重做时间间隔(ms)=重试第几次*每次间隔
+  duration: 60000
+  # 初次执行任务delay时间,单位为毫秒，默认值为0，代表首次加载任务时立即执行
+  delayTime: 0
+  # 监视进程启动间隔时间(单位：秒，一天)
+  monitorTime: 86400000
+  # 扫描进程间隔时间，单位为ms，默认值为0，代表任务只执行一次
+  scanTime: 1000
+  # 允许任务处于处理中的最长时间(单位：秒，两天)
+  statusTime: 172800000
+  # 临时目录
+  tempDir: E:\temp\task\
+
+#被通知人相关信息
+notice:
+  # 短信邮件转发服务器
+  #url: http://192.168.0.200:7080
+  # 接收人列表
+  emails: hechuan@51tuodao.com
+  # 一天允许短信通知最大次数
+  maxSendTimes: 3
+
+#encrypt:
+#  enabled: true
+#  key: foo
+#  keyStore:
+#    location: classpath:/server.jks
+#    password: letmein
+#    alias: mytestkey
+#    secret: changeme
